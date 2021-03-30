@@ -4,14 +4,19 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     lastName: {
         type: String,
-        required: true,
-        lowercase: true
+        lowercase: true,
+        trim: true
     },
     firstName: {
         type: String,
-        required: true,
-        lowercase: true
+        lowercase: true,
+        trim: true
     },
+    phone: {
+        type: String,
+        trim: true
+    },
+
     email: {
         type: String,
         required: true,
@@ -19,11 +24,31 @@ const userSchema = new Schema({
     },
     password: {
         type: String,
-        required: true,
-        minlength: 4
-        
-        
-    }
+        required: true
+    },
+    isAdmin: {
+        type: Boolean,
+        default: 'false'
+    },
+    country: {
+        type: String,
+        uppercase: true,
+    },
+
+    city: {
+        type: String,
+        lowercase: true,
+    },
+    StreetNumber: {
+        type: Number,
+    },
+    StreetName: {
+        type: String,
+    },
+    zipCode: {
+        type: Number,
+    },
+
 })
 
 module.exports = mongoose.model('User', userSchema);
